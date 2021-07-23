@@ -3,6 +3,11 @@
 ## Project setup
 ```
 yarn install
+
+yarn add @polkadot/api
+yarn add @polkadot/ui-keyring
+yarn add @polkadot/util-crypto
+yarn add @polkadot/extension-dapp
 ```
 
 ### Compiles and hot-reloads for development
@@ -20,5 +25,4 @@ yarn build
 yarn lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
