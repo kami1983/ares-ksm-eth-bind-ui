@@ -15,6 +15,7 @@ yarn add element-ui
 
 [comment]: <> (yarn add babel-preset-es2015 --dev)
 
+--
 ```
 
 ### Compiles and hot-reloads for development
