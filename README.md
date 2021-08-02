@@ -1,23 +1,10 @@
 # ares-ksm-ui
+If you participate in CrowdLoan, you can bind your ETH address and get rewards later.
 
 ## Project setup
 ```
 yarn install
-
-yarn add @polkadot/api
-yarn add @polkadot/ui-keyring
-yarn add @polkadot/util-crypto
-yarn add @polkadot/extension-dapp
-
-yarn add element-ui
-
-[comment]: <> (yarn add babel-plugin-component --dev)
-
-[comment]: <> (yarn add babel-preset-es2015 --dev)
-
---
 ```
-
 ### Compiles and hot-reloads for development
 ```
 yarn serve

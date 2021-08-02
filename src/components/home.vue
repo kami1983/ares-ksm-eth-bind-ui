@@ -39,7 +39,7 @@
 // import { cryptoWaitReady, decodeAddress , signatureVerify, mnemonicGenerate} from '@polkadot/util-crypto';
 // import { u8aToHex,stringToU8a} from '@polkadot/util';
 // import { mnemonicGenerate } from '@polkadot/util-crypto';
-import { getWebAccount, extractAccount , makeSignature, signatureVaild } from '../lib/try_webinfo'
+import { getWebAccount, extractAccount , makeSignature, signatureVaild } from '../lib/web3info'
 
 export default {
   name: 'HelloWorld',
