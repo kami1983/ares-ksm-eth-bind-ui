@@ -14,7 +14,7 @@
     <el-input v-model="eth_address" placeholder="请输入 ETH 地址"></el-input>
     <el-button type="success" round @click="pushBindRelation" >Submit</el-button>
     <hr/>
-    <div>Public key</div>
+    <div>Msg</div>
     <el-input v-model="raw_message" placeholder="Raw message"></el-input>
     <div>Signature info</div>
     <el-input
