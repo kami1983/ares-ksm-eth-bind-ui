@@ -29,6 +29,7 @@
 // import {KUSAMA_SS58_FORMAT, ORIGIN_NAME} from '../config/const'
 // import web3 support lib
 import {makeSignature} from '../lib/web3info'
+import {BACKEND_VALID_URL} from '../config/const'
 import axios from "axios"
 
 export default {
@@ -115,7 +116,7 @@ export default {
         console.log(data)
         axios({
           method: "post",
-          url: "http://localhost:8081/bind-eth",
+          url: BACKEND_VALID_URL,
           data: data,
         }).then((res) => {
           console.log(res.data)
