@@ -12,10 +12,11 @@
 
 <script>
 // import const config | item-click
-import {KUSAMA_SS58_FORMAT, ORIGIN_NAME} from '../config/const'
+import {BACKEND_CONTRIBUTED_URL, KUSAMA_SS58_FORMAT, ORIGIN_NAME} from '../config/const'
 // import web3 support lib
 import {getWebAccount} from '../lib/web3info'
 import LinDropdownItem from './dropdown-item.vue'
+import axios from "axios";
 
 const CONST_BUTTON_TEXT_IS_CONNECT_WALLET = 'Connect Wallet'
 const CONST_BUTTON_TEXT_IS_SELECT_ACCOUNT = 'Select Account'
@@ -85,14 +86,37 @@ export default {
       }
     },
     // Triggered by user selection.
-    selectAccount (account) {
+    async selectAccount (account) {
       // Set account on component variable.
       this.selected_account = account
+      // test address : DwNtx1QwfKHLjtrZJNYhesqcJQBukefNCTb8jTHNRerTmKY
+      const contributed = await this.getContributed(account.address)
+      console.log('contributed', contributed)
       // Update text of connection button.
-      this.button_text = `(${account.meta.name})${account.address}`
-      this.$emit('selected-account',account)
+      this.button_text = `(${account.meta.name})${account.address},${contributed / 100000000000000000}`
+      this.$emit('selected-account',account, contributed)
+    },
+    getContributed(address) {
+      // /get-extrinsic/DwNtx1QwfKHLjtrZJNYhesqcJQBukefNCTb8jTHNRerTmKY
+      return new Promise(function(resolve, reject) {
+        axios({
+          method: "get",
+          url: BACKEND_CONTRIBUTED_URL+ `/${address}`,
+        }).then((res) => {
+          console.log(res.data)
+          if( res.data.length <= 0 ) {
+            resolve(0)
+          }else{
+            resolve(res.data[0].contributed)
+          }
+        }).catch((err) => {
+          reject(err)
+        })
+      })
     }
   }
+
+
 }
 </script>
 

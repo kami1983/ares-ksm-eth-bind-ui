@@ -29,8 +29,9 @@ export default {
   },
   methods : {
     // Set selected account to global variable.
-    selectedAccount(account) {
+    selectedAccount(account, contributed) {
       this.$store.commit('set_address', account)
+      this.$store.commit('set_contributed', contributed)
       console.log(this.$store.state.oper_address)
     }
   }
