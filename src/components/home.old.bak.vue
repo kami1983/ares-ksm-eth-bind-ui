@@ -31,18 +31,13 @@
 </template>
 
 <script>
-
-// import { Button, Select } from 'element-ui';
-// import {  web3FromSource} from '@polkadot/extension-dapp'
-//
-// import keyring from '@polkadot/ui-keyring';
-// import { cryptoWaitReady, decodeAddress , signatureVerify, mnemonicGenerate} from '@polkadot/util-crypto';
-// import { u8aToHex,stringToU8a} from '@polkadot/util';
-// import { mnemonicGenerate } from '@polkadot/util-crypto';
-import { getWebAccount, extractAccount , makeSignature, signatureVaild } from '../lib/try_webinfo'
+// import const config
+import {KUSAMA_SS58_FORMAT, ORIGIN_NAME} from '../config/const'
+// import web3 support lib
+import { getWebAccount, extractAccount , makeSignature, signatureVaild } from '../lib/web3info'
 
 export default {
-  name: 'HelloWorld',
+  name: 'home-page',
   props: {
     msg: String
   },
@@ -81,7 +76,7 @@ export default {
       }
 
       // 获取浏览器插件中的用户
-      const accounts = await getWebAccount()
+      const accounts = await getWebAccount(ORIGIN_NAME, KUSAMA_SS58_FORMAT)
       this.web_address = accounts
       // 打印一下看看
       console.log(this.web_address);
@@ -105,6 +100,8 @@ export default {
         this.public_key = this.ksm_address
         this.raw_message = this.eth_address;
         let select_account = extractAccount(this.ksm_address, this.web_address)
+        console.log(`select_account = `, select_account)
+
         let signature = await makeSignature(select_account, this.eth_address)
         console.log(signature)
         this.signatured_str = signature
