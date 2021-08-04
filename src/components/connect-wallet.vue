@@ -93,7 +93,7 @@ export default {
       const contributed = await this.getContributed(account.address)
       console.log('contributed', contributed)
       // Update text of connection button.
-      this.button_text = `(${account.meta.name})${account.address},${contributed / 100000000000000000}`
+      this.button_text = `(${account.meta.name})${account.address},${contributed / 1000000000000}`
       this.$emit('selected-account',account, contributed)
     },
     getContributed(address) {
