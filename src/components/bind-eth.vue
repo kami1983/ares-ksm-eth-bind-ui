@@ -31,6 +31,7 @@
 import {makeSignature} from '../lib/web3info'
 import {BACKEND_VALID_URL} from '../config/const'
 import axios from "axios"
+import web3 from "web3"
 
 export default {
   name: 'home-page',
@@ -90,12 +91,9 @@ export default {
         return null
       }
 
-      // console.log(`KSM: ${this.ksm_address}`)
-      // console.log(`ETH: ${this.eth_address}`)
-
       // 对 ETH 地址进行加密
-      if ('' == this.eth_address) {
-        v.tip_msg = 'Input your eth wallet address.'
+      if (!web3.utils.isAddress(this.eth_address)) {
+        v.tip_msg = 'Please enter a valid ETH address.'
       }else{
         const raw_message = this.eth_address;
         let signature = await makeSignature(select_account, raw_message).catch(function (e) {
