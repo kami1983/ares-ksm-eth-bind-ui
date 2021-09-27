@@ -13,6 +13,7 @@ export async function getWebAccount (origin_name, ss58_format) {
         const accounts = await web3Accounts({ss58Format: ss58_format});
         return accounts
     }
+    return []
 }
 
 /**
@@ -74,7 +75,7 @@ export function signatureVaild(signedMessage, signature, publicKey) {
 export function testSignature() {
     // Signature
     cryptoWaitReady().then( async () => {
-        // 测试加密解密
+        // Test singn
         let signedMessage = 'This is a text message';
         let signature = '0x2aeaa98e26062cf65161c68c5cb7aa31ca050cb5bdd07abc80a475d2a2eebc7b7a9c9546fbdff971b29419ddd9982bf4148c81a49df550154e1674a6b58bac84';
         let test_address = '5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty';
@@ -84,7 +85,7 @@ export function testSignature() {
         console.log("TEST==========")
         console.log(hexPublicKey)
         let signature_status = signatureVerify(signedMessage, signature, hexPublicKey).isValid;
-        console.log("签名验证状态：" +  signature_status)
+        console.log("Sign status: " +  signature_status)
 
     });
 }
