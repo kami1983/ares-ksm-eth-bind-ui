@@ -64,7 +64,7 @@ export async function makeSignature(account, message) {
  * Verify signature, this function for test.
  * */
 export function signatureVaild(signedMessage, signature, publicKey) {
-    // 签名
+    //
     return cryptoWaitReady().then( async () => {
         let verify_result = signatureVerify(signedMessage, signature, publicKey).isValid;
         return verify_result
